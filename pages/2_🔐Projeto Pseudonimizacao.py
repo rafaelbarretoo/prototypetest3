@@ -15,7 +15,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 st.write("\n Nesta plataforma, sua tarefa é avaliar cada proposta de projeto em **duas dimensões**\\"
          "\n **1** - O problema que o projeto busca resolver\\"
          "\n **2** - A solução proposta")
@@ -33,47 +32,64 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.write("\n **Superintendência:** SUPEX \\" 
-"\n **Gerência:** Jurídica e Compliance e DPO\\"
-"\n **Proponente:** Raquel Araújo\\"
-"\n **Problema Identificado:** (PREENCHER)**\\"
-"\n **Objetivo da proposta:**\\"
-"\n **Solução sugerida:**\\"
-"\n **Resultados esperados:**\\"
-"\n **Principais recursos envolvidos:**\\"
-"\n **Prazo estimado de execução:**")
-st.link_button("Forms do Projeto", "https://docs.google.com/forms/d/e/1FAIpQLScPJUWHcnSDBV2HKEHPqUg9OOfQKl3tPqCs7KlqpvGB6b7BTA/viewform")
+st.markdown(
+    "<div style='text-align: center; color: #4B0082; font-size: 15px;'>"
+    "SUPEX - Ger. Jurídica, Compliance e DPO - Raquel/Elissa"
+    "</div>",
+    unsafe_allow_html=True
+)
+st.write("")
+
+with st.expander("\n **Resumo do Projeto**"):
+    st.write("\n **Problema Identificado:**  \\"
+        "\n **Recursos financeiros previstos:** \\"
+        "\n **Prazo estimado de execução:**  \\"
+        "\n **Resultados esperados:**\\" 
+        "\n • \\"
+        "\n • \\" 
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n **Áreas envolvidas:** ")
+
+with st.expander("**Observações CIP**"):
+    st.write("Considerações da CIP referente a proposta de projetos")
+
+st.link_button("Forms do Projeto", "https://docs.google.com/spreadsheets/d/1EOTViNNpObQ7Yz4kqWLp_S_lLkdlzqf3-3qhh_KULbA/edit?gid=1884140145#gid=1884140145")
+
 
 # Título
 st.markdown(
     "<div style='text-align: center; color: #4B0082; font-size: 20px;'>"
-    "🎯 Avaliação Projeto Pseudonimização"
+    "🎯 Avaliação do Projeto Pseudonimização (Ana-IA)"
     "</div>",
     unsafe_allow_html=True
 )
 
 
-#st.title("🎯 Avaliação Projeto Pseudonimização")
-#st.subheader("SUPEX - Gerência Jurídica - Raquel")
 
-nomes_usuarios = ["Nome","Aline Oliveira","André Diniz", "Guilherme Carrijo","Leonardo Briza", "Marcelo Gallo","Monica Vargas", "Patricia Testai", "Paulo Ravagnani", "Teste", "Teste1", "Teste2"]
+nomes_usuarios = ["Aline Oliveira","André Diniz", "Guilherme Carrijo","Leonardo Briza", "Marcelo Gallo","Monica Vargas", "Patricia Testai", "Paulo Ravagnani"]
 avaliador = st.selectbox("Escolha o seu nome", nomes_usuarios)
 
-#avaliador = st.text_input("Identificação do Avaliador")
-
-# === PROBLEMA ===
 st.markdown(
     "<div style='text-align: center; color: #011B70; font-size: 15px;'>"
     "Critérios - Problema"
     "</div>",
     unsafe_allow_html=True
-) 
+)
 
-with st.expander("**Descrição do problema:**"):
-    st.write("\n A proposta levanta o problema dos **riscos do não cumprimento integral da LGPD em nossos Sistemas, como possíveis sanções pela ANPD e dificuldades para estarmos aderentes ao self assesment de empresas parceiras ou potenciais parceiras.** O problema foi avaliado como **GRAVE** pela CIP, com aparente tendência de **PIORA**.")
+#avaliador = st.text_input("Identificação do Avaliador")
+
+# === PROBLEMA ===
+
+#with st.expander("**Descrição do Problema:**"):
+         #st.write("\nA proposta levanta o problema **da sobrecarga enfrentada pela equipe responsável pelas análises de contratos e licitações do CIEE, bem como do prazo extenso que temos para dar devolutiva às empresas que nos contratam. Além disso, a automação minimiza o risco de erros humanos, evita retrabalho, contribui para uma atuação mais alinhada às normas e fluxos internos, e torna a área mais resiliente diante de oscilações de demanda.** O problema foi avaliado como **GRAVE** pela CIP, com aparente tendência de **ESTABILIDADE**. ")
 
 #with st.expander("**Observações:**"):
-    #st.write("\n O problema específico que o projeto quer resolver não está claro; há uma descrição genérica e ampla sobre como o projeto pode resolver potenciais problemas que o não cumprimento integral da LGPD em nossos sistemas podem acarretar, como possíveis sanções pela ANPD e dificuldades para estarmos aderentes ao self assesment de empresas parceiras ou potenciais parceiras. Assim, antes de pensar em como o projeto soluciona diversos aspectos, falta pensar e definir melhor o problema para estruturar e priorizar de forma mais assertiva a implementação. Por fim, sem o cenário concreto é mais difícil avaliar sua real gravidade atual, bem como a tendência de piora (que, genericamente, tende a piorar com o acúmulo de casos que podem aparecer).")
+    #st.write(" \n Observações: o problema específico que o projeto quer resolver está claro; ")
 
 
 st.write(" ")
@@ -94,18 +110,20 @@ media_problema = calcular_media(notas_problema, pesos_problema)
 st.metric("Média - Problema", f"{media_problema:.2f}")
 
 # === SOLUÇÃO ===
-with st.expander("**Descrição da Solução:**"):
-    st.write("A solução proposta é **“criar formas sistêmicas e automatizadas da pseudononimização dos dados, hoje inexistente”** para **“cumprimento de exigência legal”** Essa solução se alinha com a prioridade estratégica **“Assegurar um superávit estável”**, focada na redução de riscos e custos (processos e resolução de conflitos) e **“Mais Eficiência / Produtividade”**, por liberar mão de obra de colaboradores que precisam tratar manualmente caso a caso. Também está associada a: Melhor qualificação da base de estudantes, Atualização tecnológica, Tirar o máximo de cada ferramenta tecnológica, Reorganização / Descentralização e Outro (estar em conformidade com as diretrizes da LGPD). A proposta, na visão da CIP tem um impacto **GRANDE** para o CIEE parece ter **ALTA** viabilidade, quando analisamos potenciais custos, prazos e riscos. Além disso aparenta ter influência **POSITIVA** na cultura e ambiente organizacional, ser uma proposta que traz **BAIXO** grau de inovação, abrangência **GRANDE** em termos de alcance de público e territorial e **ALTA** adaptabilidade e resistência a mudanças sejam elas tecnológicas, regulatórias, culturais, etc..")
-
-#with st.expander("**Observações:**"):
-    #st.write("\n A solução que o projeto quer resolver não foi descrita; quais seriam, do ponto de vista da área proponente, as “formas sistêmicas e automatizadas da pseudononimização dos dados”? Há ferramentas, benchmarks, exemplos que ilustrem o que a área espera e onde estarão estas funcionalidades nos sistemas? Há diretrizes técnicas / boas práticas levantadas para serem usadas como premissas? Sem isso minimamente estabelecido, qualquer estimativa de prazo ou solicitação de recursos e priorização fica difícil e acaba sendo muito “chutada”. O impacto potencial pode ser alto, com influência positiva na cultura organizacional relacionada à privacidade e segurança da informação, mas a forma da solução precisa estar mais clara. Dessa forma, a medição dos impactos traz uma resposta inadequada para a pergunta, que busca refletir sobre indicadores - quali ou quanti - para acompanhamento dos resultados esperados descritos. Por fim, parece ser uma aplicação com baixo grau de inovação, voltada para uma implementação de ferramentas ou práticas já bem definidas no mercado, e potencialmente com boa resiliência para mudanças tecnológicas e regulatórias, a depender do uso dessa premissa para elaboração da solução. ")
-
 st.markdown(
     "<div style='text-align: center; color: #011B70; font-size: 15px;'>"
     "Critérios - Solução"
     "</div>",
     unsafe_allow_html=True
 )
+
+#with st.expander(" Descrição da Solução:"):
+    #st.write("\nA solução proposta é **implementar um avatar “analista virtual”, baseado em inteligência artificial, que ficará disponível para todas as Unidades do CIEE. Esse analista virtual terá como função principal realizar a análise automática de documentos como contratos, editais e termos de referência, além de sanar dúvidas e orientar corretamente os colaboradores quanto aos fluxos internos, possibilidades de contratação, evidenciação de riscos.** Essa solução se alinha com a prioridade estratégica **“Atualização tecnológica”**, focada na redução de custos (análise de contratos) e **“Mais Eficiência / Produtividade”**, por liberar mão de obra de colaboradores que precisam tratar manualmente caso a caso, do início ao fim. A proposta, na visão da CIP tem um impacto **GRANDE** para o CIEE parece ter viabilidade **RAZOÁVEL**, quando analisamos potenciais custos, prazos e riscos. Além disso aparenta ter influência **NEUTRA** na cultura e ambiente organizacional, ser uma proposta que traz **ALTO** grau de inovação, abrangência **GRANDE** em termos de alcance de público e territorial e **MÉDIA** adaptabilidade a mudanças sejam elas tecnológicas, regulatórias, culturais, etc.")
+    
+#with st.expander("Observações:"):    
+    #st.write(" A solução que o projeto quer implementar é descrita de forma detalhada, contribuindo de forma direta para a produtividade, segurança, inovação, evolução dos processos internos e fortalecimento do CIEE como um todo. Impacto e resultados esperados bem modelados, com espaço para ampliar indicadores - quali ou quanti - para acompanhamento dos resultados esperados descritos. Há ferramentas, benchmarks, exemplos que ilustrem o que a área espera e onde estarão estas funcionalidades nos sistemas? Apesar de não haver dados para estimar os prazos e custos da implementação, o que seria necessário para começar a implementação este ano, não parece haver subsídio ou fontes para essa estimativa antes da decisão sobre se o desenvolvimento será interno ou externo e o desenvolvedor tomar pé do escopo do projeto (o que só deve acontecer após sua aprovação). De qualquer forma, o prazo de 4 a 8 meses parece verossímil para a proposta. O início em agosto de 2025 também, apesar de depender de outros fatores, como a priorização do presente projeto.")
+
+
 st.write(" ")
 
 viabilidade_solucao = st.slider("\n**Viabilidade da Solução (Custo, Prazo, Riscos, etc.) - Peso: 0,30**\\"
@@ -115,9 +133,9 @@ resultados_esperados = st.slider("\n**Resultados Esperados - Peso: 0,30**\\"
                                  "\nOs resultados estão bem descritos? São mensuráveis e alinhados com o objetivo do projeto?"
                                  , 0.0, 5.0, 0.0, step=0.5)
 impacto_solucao = st.slider("\n**Impacto da Solução - Peso 0,20**\\"
-                            "\n**A solução trará benefícios concretos para o CIEE? Vai melhorar processos, resultados ou experiências?** "
+                            "\nA solução trará benefícios concretos para o CIEE? Vai melhorar processos, resultados ou experiências? "
                             , 0.0, 5.0, 0.0, step=0.5)
-alinhamento_estrategico = st.slider("\n**Alinhamento Estratégico e Estatutário - Peso 0,10**\\"
+alinhamento_estrategico = st.slider("\n**Alinhamento Estratégico - Peso 0,10**\\"
                                     "\n A proposta está conectada com o planejamento estratégico ou com compromissos institucionais?"
                                     , 0.0, 5.0, 0.0, step=0.5)
 abrangencia = st.slider("\n**Abrangência (Público e Território) - Peso: 0,10**\\"
@@ -129,10 +147,9 @@ notas_solucao = [viabilidade_solucao, resultados_esperados, impacto_solucao, ali
 pesos_solucao = [0.30, 0.30, 0.20, 0.10, 0.10]
 media_solucao = calcular_media(notas_solucao, pesos_solucao)
 st.metric("Média - Solução", f"{media_solucao:.2f}")
-
-
 ### Pensar no Campo observações !!!!
 
+observacoes = st.text_area("Deixe a sua opinião sobre o projeto avaliado:")
 
 # === MÉDIA FINAL ===
 media_geral = calcular_media(
@@ -149,9 +166,7 @@ elif media_geral <4:
 else:
     st.write("De acordo com a sua avaliação o projeto foi **APROVADO**")
 
-### Pensar no Campo observações !!!!
 
-observacoes = st.text_area("Deixe a sua opinião sobre o projeto avaliado:")
 
 # === SALVAR ===
 if st.button("Salvar Avaliação"):
@@ -162,11 +177,11 @@ if st.button("Salvar Avaliação"):
         "Tendência": [tendencia],
         "Média Problema": [media_problema],
         "Viabilidade da Solução": [viabilidade_solucao],
+        "Resultados Esperados": [resultados_esperados],
         "Impacto da Solução": [impacto_solucao],
         "Alinhamento Estratégico e Estatutário": [alinhamento_estrategico],
         "Abrangência (Publico/Território)": [abrangencia],
         "Média Solução": [media_solucao],
-        "Resultados Esperados": [resultados_esperados],
         "Média Final": [media_geral],
         "Observação" : [observacoes]
     }

@@ -25,9 +25,9 @@ st.markdown(f"""
             Após as avaliações, a média geral das avaliações foi: {media_geral_final:.2f}""")
 
 if media_geral_final <= 2:
-    mensagem = st.warning("Proposta de Projeto **reprovada**")
+    mensagem = st.error("Proposta de Projeto **reprovada**")
 elif 2 < media_geral_final <= 4:
-    mensagem ="Proposta de projeto precisa de uma **revisão**"
+    mensagem =st.warning("Proposta de projeto precisa de uma **revisão**")
 else:
     mensagem = st.success("Proposta de projeto **aprovada**")
 
@@ -37,6 +37,28 @@ st.markdown("")
 
 if os.path.exists(arquivo):
     df = pd.read_excel(arquivo)
+   
+
+    # Tabela de médias
+    
+    colunas_medias = [
+        "Avaliador",
+        "Média Problema",
+        "Média Solução",
+        "Média Final"
+    ]
+    df_medias = df[colunas_medias]
+    
+
+    # Gráfico com as médias
+    st.subheader("📊 Gráfico de Médias por Avaliador")
+    df_plot = df_medias.melt(id_vars=["Avaliador"], var_name="Critério", value_name="Nota")
+    fig = px.bar(df_plot, x="Avaliador", y="Nota", color="Critério", barmode="group")
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.subheader("📈 Tabela de Médias por Avaliador")
+    st.dataframe(df_medias)
+
 
 # Tabela completa
     st.subheader("📋 Tabela Completa")
@@ -46,28 +68,18 @@ if os.path.exists(arquivo):
 
     st.dataframe(df)
 
-    # Tabela de médias
-    st.subheader("📈 Tabela de Médias por Avaliador")
-    colunas_medias = [
-        "Avaliador",
-        "Média Problema",
-        "Média Solução",
-        "Média Final"
-    ]
-    df_medias = df[colunas_medias]
-    st.dataframe(df_medias)
+    media_colunas = df.mean(numeric_only= True)
 
-    # Gráfico com as médias
-    st.subheader("📊 Gráfico de Médias por Avaliador")
-    df_plot = df_medias.melt(id_vars=["Avaliador"], var_name="Critério", value_name="Nota")
-    fig = px.bar(df_plot, x="Avaliador", y="Nota", color="Critério", barmode="group")
-    st.plotly_chart(fig, use_container_width=True)
+    st.write("Média de cada critério")
+    st.dataframe(media_colunas.to_frame(name="Média").T)
 
     
 
     # Média geral final
     media_geral_final = df["Média Final"].mean()
     st.success(f"🎯 Média Geral Final (todos os avaliadores): {media_geral_final:.2f}")
+
+
 
 
 # Comentários e Observações 
@@ -86,7 +98,10 @@ if "Avaliador" in df.columns and "Observação" in df.columns:
                 st.info(f">{row['Observação']}")
                 st.markdown("----------")
         else:
-            st.warning("Não foram registradas observações e comentários !")
+            st.write(f"**Avaliador:** {row['Avaliador']}")
+            st.warning(">Não registrou comentários !")
+            st.markdown("----------")
+            
     # Botões de download
     st.subheader("⬇️ Exportar Tabelas")
 
@@ -119,4 +134,3 @@ st.markdown(mensagem)
 
 
 st.caption("CIP - Central de Inovações e Projetos")
- 

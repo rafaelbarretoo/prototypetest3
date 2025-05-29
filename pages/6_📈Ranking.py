@@ -6,7 +6,14 @@ import plotly.express as px
 
 st.set_page_config(page_title="📈Ranking", page_icon="📈")
 
-st.title("📈Ranking")
+#st.title("📈Ranking")
+
+st.markdown(
+    "<div style='text-align: center; color: #4B0082; font-size: 40px;'>"
+    "📈Ranking" "<br>"
+    "</div>",
+    unsafe_allow_html=True
+)
 
 # Importando Arquivos DF
 arquivo1 = "avaliacoes.xlsx"
@@ -27,11 +34,11 @@ if not os.path.exists(arquivo1) or not os.path.exists(arquivo2):
 else:
     df1 = pd.read_excel(arquivo1)
     df2 = pd.read_excel(arquivo2)
-    st.success("Arquivos carregados com sucesso !")
+    #st.success("Arquivos carregados com sucesso !")
 
     # Ranking Geral
     if "Média Final" in df1.columns and "Média Final" in df2.columns:
-        st.subheader("Ranking Geral")
+        #st.subheader("Ranking Geral")
 
         media_geral_1 = df1["Média Final"].mean()
         media_geral_2 = df2["Média Final"].mean()
@@ -44,10 +51,31 @@ else:
         ranking_df.index = ranking_df.index +1
         ranking_df.name= "Posição"
 
-        st.dataframe(ranking_df.style.format({"Média Final Geral": "{:.2f}"})) 
+        st.markdown("""
+                    <style>
+                    div[data=testid="stDataFrame"] div {
+                    font-size= 25px;
+                    }
+                    </style>
+        """, unsafe_allow_html=True)
+        st.dataframe(ranking_df.style.format({"Média Final Geral": "{:.2f}"}), row_height=50) 
+
+        st.data_editor(
+            ranking_df,
+            column_config={
+                "Média Final Geral": st.column_config.ProgressColumn(
+                    "Média Final",
+                    help="Média final das avaliações",
+                    format="5",
+                    min_value=0,
+                    max_value= 5,
+                ),
+            },
+            hide_index= False,
+        )
+
         #st.table(ranking_df.to_dict(orient="records"))
 
-        st.subheader("Comparação Visual")
         fig_rank = px.bar(
             ranking_df,
             x= "Tabela",

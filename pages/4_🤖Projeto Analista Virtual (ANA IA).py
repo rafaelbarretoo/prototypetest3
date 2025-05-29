@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 
-st.set_page_config(page_title="🤖 Projeto Pseudonimiação", page_icon="🤖")
+st.set_page_config(page_title="🤖 Projeto Analista Virtual (Ana IA)", page_icon="🤖")
 
 def calcular_media(notas, pesos):
     return sum(n * p for n, p in zip(notas, pesos))
@@ -31,16 +31,35 @@ st.markdown(
     "</div>",
     unsafe_allow_html=True
 )
-st.write("\n **Superintendência:** SUPEX \\" 
-"\n **Gerência:** Jurídica e Compliance e DPO\\"
-"\n **Proponente:** Fabricio Canonaco\\"
-"\n **Problema Identificado:** (PREENCHER)**\\"
-"\n **Objetivo da proposta:**\\"
-"\n **Solução sugerida:**\\"
-"\n **Resultados esperados:**\\"
-"\n **Principais recursos envolvidos:**\\"
-"\n **Prazo estimado de execução:**")
-st.link_button("Forms do Projeto", "https://docs.google.com/forms/d/e/1FAIpQLScPJUWHcnSDBV2HKEHPqUg9OOfQKl3tPqCs7KlqpvGB6b7BTA/viewform")
+
+st.markdown(
+    "<div style='text-align: center; color: #4B0082; font-size: 15px;'>"
+    "SUPEX - Ger. Jurídica, Compliance e DPO / Sup. de Administração de Contratos e CNL - Fabrício Canonaco"
+    "</div>",
+    unsafe_allow_html=True
+)
+st.write("")
+
+with st.expander("\n **Resumo do Projeto**"):
+    st.write("\n **Problema Identificado:** Gargalos operacionais (sobrecarga da equipe de análises de contratos e licitações), que geram SLA extenso nas respostas às Unidades de Operação e empresas. \\"
+        "\n **Solução sugerida:** Implementação de analista virtual baseado em IA em ambiente digital acessível (portal, chat ou widget) para realizar a análise automática de documentos como contratos, editais e termos de referência, além de sanar dúvidas e orientar corretamente os colaboradores quanto aos fluxos internos, possibilidades de contratação, evidenciação de riscos. \\"
+        "\n **Recursos financeiros previstos:** Não previsto.\\"
+        "\n **Prazo estimado de execução:** 4-8 Meses \\"
+        "\n **Resultados esperados:**\\" 
+        "\n • Maior produtividade;\\"
+        "\n • Maior satisfação dos clientes internos e externos;\\" 
+        "\n • Respostas instantâneas e padronizadas;\\"
+        "\n • Suporte em tempo real para dúvidas operacionais, contratações e interpretação de documentos durante as negociações com os parceiros;\\"
+        "\n • Redução de riscos jurídicos e administrativos, como erros humanos, inconsistências e retrabalho;\\"
+        "\n • Mapeamento de possíveis riscos ou exigências em cada situação;\\"
+        "\n • Relatórios gerenciais sobre tipos de solicitações e demandas processadas;\\"
+        "\n • Escalabilidade compatível com demanda crescente.\\"
+        "\n **Áreas envolvidas:** Sup. de Administração de Contratos e CNL, Ger. de Tecnologia, Sup. de Cloud Computing e Suporte de TI, Sup. de Desenvolvimento de Sistemas e Processos de Atendimento, Sup. de Segurança da Informação, Sup. de Governança de Dados e DB Analytics, Ger. Jurídica e Compliance e DPO, Ger. Regional de Atendimento SP e Capital. ")
+
+with st.expander("**Observações CIP**"):
+    st.write("Problema bem definido (alguns quantitativos poderiam ajudar a ilustrar ainda melhor); solução clara com etapas bem definidas para implementação (roadmap com 7 etapas / entregas); prazo de 4 a 8 meses parece verossímil para a proposta; interessante para pilotar uso de IA nos fluxos e processos da organização; impacto e resultados esperados bem mapeados, com espaço para ampliar indicadores - quali ou quanti - para acompanhamento dos resultados esperados descritos. Incluir ferramentas, benchmarks, exemplos que ilustrem o que a área espera e as funcionalidades no sistema. Para desenvolvimento terceirizado e início em 2025, é imprescindível orçar e incluir os custos na revisão orçamentária; incluir áreas da SUNOA para acompanhar o desenvolvimento da solução e o setor de Governança de Dados e DBA.")
+
+st.link_button("Forms do Projeto", "https://docs.google.com/spreadsheets/d/1EOTViNNpObQ7Yz4kqWLp_S_lLkdlzqf3-3qhh_KULbA/edit?gid=1884140145#gid=1884140145")
 
 
 # Título
@@ -54,7 +73,7 @@ st.markdown(
 #st.title("🎯 Avaliação Projeto Pseudonimização")
 #st.subheader("SUPEX - Gerência Jurídica - Raquel")
 
-nomes_usuarios = ["Nome","Aline Oliveira","André Diniz", "Guilherme Carrijo","Leonardo Briza", "Marcelo Gallo","Monica Vargas", "Patricia Testai", "Paulo Ravagnani", "Teste", "Teste1", "Teste2"]
+nomes_usuarios = ["Aline Oliveira","André Diniz", "Guilherme Carrijo","Leonardo Briza", "Marcelo Gallo","Monica Vargas", "Patricia Testai", "Paulo Ravagnani"]
 avaliador = st.selectbox("Escolha o seu nome", nomes_usuarios)
 
 st.markdown(
@@ -68,8 +87,8 @@ st.markdown(
 
 # === PROBLEMA ===
 
-with st.expander("**Descrição do Problema:**"):
-         st.write("\nA proposta levanta o problema **da sobrecarga enfrentada pela equipe responsável pelas análises de contratos e licitações do CIEE, bem como do prazo extenso que temos para dar devolutiva às empresas que nos contratam. Além disso, a automação minimiza o risco de erros humanos, evita retrabalho, contribui para uma atuação mais alinhada às normas e fluxos internos, e torna a área mais resiliente diante de oscilações de demanda.** O problema foi avaliado como **GRAVE** pela CIP, com aparente tendência de **ESTABILIDADE**. ")
+#with st.expander("**Descrição do Problema:**"):
+         #st.write("\nA proposta levanta o problema **da sobrecarga enfrentada pela equipe responsável pelas análises de contratos e licitações do CIEE, bem como do prazo extenso que temos para dar devolutiva às empresas que nos contratam. Além disso, a automação minimiza o risco de erros humanos, evita retrabalho, contribui para uma atuação mais alinhada às normas e fluxos internos, e torna a área mais resiliente diante de oscilações de demanda.** O problema foi avaliado como **GRAVE** pela CIP, com aparente tendência de **ESTABILIDADE**. ")
 
 #with st.expander("**Observações:**"):
     #st.write(" \n Observações: o problema específico que o projeto quer resolver está claro; ")
@@ -100,8 +119,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-with st.expander(" Descrição da Solução:"):
-    st.write("\nA solução proposta é **implementar um avatar “analista virtual”, baseado em inteligência artificial, que ficará disponível para todas as Unidades do CIEE. Esse analista virtual terá como função principal realizar a análise automática de documentos como contratos, editais e termos de referência, além de sanar dúvidas e orientar corretamente os colaboradores quanto aos fluxos internos, possibilidades de contratação, evidenciação de riscos.** Essa solução se alinha com a prioridade estratégica **“Atualização tecnológica”**, focada na redução de custos (análise de contratos) e **“Mais Eficiência / Produtividade”**, por liberar mão de obra de colaboradores que precisam tratar manualmente caso a caso, do início ao fim. A proposta, na visão da CIP tem um impacto **GRANDE** para o CIEE parece ter viabilidade **RAZOÁVEL**, quando analisamos potenciais custos, prazos e riscos. Além disso aparenta ter influência **NEUTRA** na cultura e ambiente organizacional, ser uma proposta que traz **ALTO** grau de inovação, abrangência **GRANDE** em termos de alcance de público e territorial e **MÉDIA** adaptabilidade a mudanças sejam elas tecnológicas, regulatórias, culturais, etc.")
+#with st.expander(" Descrição da Solução:"):
+    #st.write("\nA solução proposta é **implementar um avatar “analista virtual”, baseado em inteligência artificial, que ficará disponível para todas as Unidades do CIEE. Esse analista virtual terá como função principal realizar a análise automática de documentos como contratos, editais e termos de referência, além de sanar dúvidas e orientar corretamente os colaboradores quanto aos fluxos internos, possibilidades de contratação, evidenciação de riscos.** Essa solução se alinha com a prioridade estratégica **“Atualização tecnológica”**, focada na redução de custos (análise de contratos) e **“Mais Eficiência / Produtividade”**, por liberar mão de obra de colaboradores que precisam tratar manualmente caso a caso, do início ao fim. A proposta, na visão da CIP tem um impacto **GRANDE** para o CIEE parece ter viabilidade **RAZOÁVEL**, quando analisamos potenciais custos, prazos e riscos. Além disso aparenta ter influência **NEUTRA** na cultura e ambiente organizacional, ser uma proposta que traz **ALTO** grau de inovação, abrangência **GRANDE** em termos de alcance de público e territorial e **MÉDIA** adaptabilidade a mudanças sejam elas tecnológicas, regulatórias, culturais, etc.")
     
 #with st.expander("Observações:"):    
     #st.write(" A solução que o projeto quer implementar é descrita de forma detalhada, contribuindo de forma direta para a produtividade, segurança, inovação, evolução dos processos internos e fortalecimento do CIEE como um todo. Impacto e resultados esperados bem modelados, com espaço para ampliar indicadores - quali ou quanti - para acompanhamento dos resultados esperados descritos. Há ferramentas, benchmarks, exemplos que ilustrem o que a área espera e onde estarão estas funcionalidades nos sistemas? Apesar de não haver dados para estimar os prazos e custos da implementação, o que seria necessário para começar a implementação este ano, não parece haver subsídio ou fontes para essa estimativa antes da decisão sobre se o desenvolvimento será interno ou externo e o desenvolvedor tomar pé do escopo do projeto (o que só deve acontecer após sua aprovação). De qualquer forma, o prazo de 4 a 8 meses parece verossímil para a proposta. O início em agosto de 2025 também, apesar de depender de outros fatores, como a priorização do presente projeto.")
@@ -116,9 +135,9 @@ resultados_esperados = st.slider("\n**Resultados Esperados - Peso: 0,30**\\"
                                  "\nOs resultados estão bem descritos? São mensuráveis e alinhados com o objetivo do projeto?"
                                  , 0.0, 5.0, 0.0, step=0.5)
 impacto_solucao = st.slider("\n**Impacto da Solução - Peso 0,20**\\"
-                            "\n**A solução trará benefícios concretos para o CIEE? Vai melhorar processos, resultados ou experiências?** "
+                            "\nA solução trará benefícios concretos para o CIEE? Vai melhorar processos, resultados ou experiências? "
                             , 0.0, 5.0, 0.0, step=0.5)
-alinhamento_estrategico = st.slider("\n**Alinhamento Estratégico e Estatutário - Peso 0,10**\\"
+alinhamento_estrategico = st.slider("\n**Alinhamento Estratégico - Peso 0,10**\\"
                                     "\n A proposta está conectada com o planejamento estratégico ou com compromissos institucionais?"
                                     , 0.0, 5.0, 0.0, step=0.5)
 abrangencia = st.slider("\n**Abrangência (Público e Território) - Peso: 0,10**\\"
@@ -130,8 +149,9 @@ notas_solucao = [viabilidade_solucao, resultados_esperados, impacto_solucao, ali
 pesos_solucao = [0.30, 0.30, 0.20, 0.10, 0.10]
 media_solucao = calcular_media(notas_solucao, pesos_solucao)
 st.metric("Média - Solução", f"{media_solucao:.2f}")
+### Pensar no Campo observações !!!!
 
-
+observacoes = st.text_area("Deixe a sua opinião sobre o projeto avaliado:")
 
 # === MÉDIA FINAL ===
 media_geral = calcular_media(
@@ -148,9 +168,7 @@ elif media_geral <4:
 else:
     st.write("De acordo com a sua avaliação o projeto foi **APROVADO**")
 
-### Pensar no Campo observações !!!!
 
-observacoes = st.text_area("Deixe a sua opinião sobre o projeto avaliado:")
 
 # === SALVAR ===
 if st.button("Salvar Avaliação"):
@@ -161,11 +179,11 @@ if st.button("Salvar Avaliação"):
         "Tendência": [tendencia],
         "Média Problema": [media_problema],
         "Viabilidade da Solução": [viabilidade_solucao],
+        "Resultados Esperados": [resultados_esperados],
         "Impacto da Solução": [impacto_solucao],
         "Alinhamento Estratégico e Estatutário": [alinhamento_estrategico],
         "Abrangência (Publico/Território)": [abrangencia],
         "Média Solução": [media_solucao],
-        "Resultados Esperados": [resultados_esperados],
         "Média Final": [media_geral],
         "Observação" : [observacoes]
     }
