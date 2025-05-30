@@ -20,20 +20,27 @@ st.markdown(
 arquivo = "avaliacoes.xlsx"
 
 df= pd.read_excel(arquivo)
+
+
+
 media_geral_final = df["Média Final"].mean()
+media_problema = df["Média Problema"].mean()
+media_solucao = df["Média Solução"].mean()
 
-st.markdown(f"""
-            Após as avaliações, a média geral das avaliações foi: {media_geral_final:.2f}""")
+col4, col5, col6, col7 = st.columns(4)
+with col4:
+    st.metric("Média Problema", f"{media_problema:.2f}")
+with col5:
+    st.metric("Média Solução", f"{media_solucao:.2f}")
+with col6:
+    st.metric("Média Geral", f"{media_geral_final:.2f}")
+with col7:
+    status = "Aprovada" if media_geral_final >= 4 else "Revisão" if media_geral_final >2 else "Reprovada"
+    cor = "🟢" if media_geral_final >= 4 else "🟡" if media_geral_final >2 else "🔴"
+    st.metric("Status do Projeto", f"{cor} {status}")
 
 
-if media_geral_final <= 2:
-    mensagem = st.error("Proposta de Projeto **reprovada**")
-elif 2 < media_geral_final <= 4:
-    mensagem =st.warning("Proposta de projeto precisa de uma **revisão**")
-else:
-    mensagem = st.success("Proposta de projeto **aprovada**")
 
-st.markdown(mensagem)
 
 st.markdown("")
 
@@ -75,12 +82,39 @@ if os.path.exists(arquivo):
     st.write("Média de cada critério")
     st.dataframe(media_colunas.to_frame(name="Média").T)
 
+#Gráfico de matriz
+
+st.markdown("## Matriz de Análise (Problema x Impacto)")
+if "Média Problema" in df.columns and "Média Solução" in df.columns:
+    fig_matrix = px.scatter(
+        df,
+        x="Média Problema",
+        y= "Impacto da Solução",
+        color = "Avaliador",
+        size = "Média Final",
+        hover_data=["Média Solução"],
+        title= "Matriz: Gravidade do Problema vs Impacto da Solução"
+    )
+    st.plotly_chart(fig_matrix, use_container_width= True)
+else:
+    st.info("Colunas necessárias para a matriz não estão disponíveis.")
+
     
+st.markdown("## Estatísticas por Critério")
+estatisticas = df.describe().T[["mean", "50%", "std"]].rename(columns={"mean":"Média", "50%": "Mediana", "std":"Desvio Padrão"})
+st.dataframe(estatisticas.style.format("{:.2f}"), use_container_width= True)
 
-    # Média geral final
-    media_geral_final = df["Média Final"].mean()
-    st.success(f"🎯 Média Geral Final (todos os avaliadores): {media_geral_final:.2f}")
 
+
+avaliadores_esperados = 8 #lembrar de substituir
+total_avaliadores = df["Avaliador"].nunique()
+avaliadores_pendentes = max(0, avaliadores_esperados - total_avaliadores)
+
+col1, col2 = st.columns(2)
+with col1:
+    st.metric("Avaliaçõs Realizadas", total_avaliadores)
+with col2:
+    st.metric("Avaliações Pendentes", avaliadores_pendentes)
 
 # Comentários e Observações 
 if "Avaliador" in df.columns and "Observação" in df.columns:

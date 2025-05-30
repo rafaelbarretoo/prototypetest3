@@ -170,7 +170,13 @@ else:
 
 # === SALVAR ===
 if st.button("Salvar Avaliação"):
-    dados = {
+    criterios = [gravidade, urgencia,tendencia,viabilidade_solucao,resultados_esperados,
+                 impacto_solucao, alinhamento_estrategico, abrangencia]
+    if any(valor == 0.0 for valor in criterios):
+        st.warning("Por favor, preencha todos os critérios com notas maiores que 0,0 !" )
+        
+    else: 
+        dados = {
         "Avaliador": [avaliador],
         "Gravidade": [gravidade],
         "Urgência": [urgencia],
@@ -191,9 +197,16 @@ if st.button("Salvar Avaliação"):
 
     if os.path.exists(arquivo):
         df_existente = pd.read_excel(arquivo)
-        df = pd.concat([df_existente, df], ignore_index=True)
 
-    df.to_excel(arquivo, index=False)
-    st.success("Avaliação salva com sucesso!")
+        if avaliador in df_existente["Avaliador"].values:
+            st.error("Este avaliador já preencheu a avaliação. Cada Avaliador só pode avaliar cada projeto uma vez.")
+        else:
+            df=pd.concat([df_existente,df], ignore_index=True)
+            df.to_excel(arquivo, index=False)
+            st.success("Avaliação salva com sucesso !")    
+       
+    else:
+        df.to_excel(arquivo, index=False)
+        st.success("Avaliação salva com sucesso!")
 
 st.caption("CIP - Central de Inovações e Projetos")
