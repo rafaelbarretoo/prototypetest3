@@ -3,17 +3,27 @@ import pandas as pd
 import os
 import io
 import plotly.express as px
+from PIL import Image
 
 st.set_page_config(page_title="📊 Projeto Pseudonimização", page_icon="📊")
 
+image = Image.open('headerresul.png')
+st.image(image, caption='')
 
 st.markdown(
     "<div style='text-align: center; color: #4B0082; font-size: 40px;'>"
-    "Resultados das Avaliações" "<br>"
-    "Projeto Pseudonimização (Ana IA)"
+    "🔐Projeto Pseudonimização"
     "</div>",
     unsafe_allow_html=True
 )
+
+st.markdown(
+    "<div style='text-align: center; color: #4B0082; font-size: 15px;'>"
+    "SUPEX - Ger. Jurídica, Compliance e DPO - Raquel/Elissa"
+    "</div>",
+    unsafe_allow_html=True
+)
+st.write("")
 
 #st.title("📊 Resultados das Avaliações - Analista Virtual (Ana - IA)")
 
@@ -35,8 +45,8 @@ with col5:
 with col6:
     st.metric("Média Geral", f"{media_geral_final:.2f}")
 with col7:
-    status = "Aprovada" if media_geral_final >= 4 else "Revisão" if media_geral_final >2 else "Reprovada"
-    cor = "🟢" if media_geral_final >= 4 else "🟡" if media_geral_final >2 else "🔴"
+    status = "Aprovada" if media_geral_final > 3.9 else "Revisão" if media_geral_final >2 else "Reprovada"
+    cor = "🟢" if media_geral_final > 3.9 else "🟡" if media_geral_final >2 else "🔴"
     st.metric("Status do Projeto", f"{cor} {status}")
 
 

@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
+from PIL import Image
 
 st.set_page_config(page_title="🔐 Projeto Pseudonimiação", page_icon="🔐")
 
@@ -8,22 +9,17 @@ def calcular_media(notas, pesos):
     return sum(n * p for n, p in zip(notas, pesos))
 
 #Saudações
-st.markdown(
-    "<div style='text-align: center; color: #4B0082; font-size: 30px;'>"
-    "Bem Vindo(a) ao Sistema de Avaliação de Projetos da CIP !"
-    "</div>",
-    unsafe_allow_html=True
-)
 
-st.write("\n Nesta plataforma, sua tarefa é avaliar cada proposta de projeto em **duas dimensões**\\"
-         "\n **1** - O problema que o projeto busca resolver\\"
-         "\n **2** - A solução proposta")
+image = Image.open('headerav.png')
+st.image(image, caption='')
 
-st.write("\nAtribua **uma nota de 0 a 5** para cada critério:\\"
-         "\n •   0 -  Não atende ao critério(nota mínima)\\"
-         "\n •   5 -  Atende plenamente ao critério(nota máxima)\\"
-         "\n A avaliação será calculada automaticamente conforme os pesos pré definidos."
-         )
+#st.markdown(
+    #"<div style='text-align: center; color: #4B0082; font-size: 30px;'>"
+    #"Bem Vindo(a) ao Sistema de Avaliação de Projetos da CIP !"
+    #"</div>",
+    #unsafe_allow_html=True)
+
+
 
 st.markdown(
     "<div style='text-align: center; color: #4B0082; font-size: 40px;'>"
@@ -54,6 +50,21 @@ with st.expander("\n **Resumo do Projeto**"):
         "\n • \\"
         "\n • \\"
         "\n **Áreas envolvidas:** ")
+    
+with st.expander("\n **Roadmap do Projeto**"):
+    st.write("\n **Início do Projeto:**  \\"
+        "\n • \\"
+        "\n • \\"
+        "\n •\\" 
+        "\n • \\"
+        "\n • \\" 
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n • \\"
+        "\n **Término do Projeto:** ")
 
 with st.expander("**Observações CIP**"):
     st.write("Considerações da CIP referente a proposta de projetos")
