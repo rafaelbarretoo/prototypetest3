@@ -8,8 +8,8 @@ from PIL import Image
 st.set_page_config(page_title="📈Ranking", page_icon="📈")
 
 # Importando Arquivos DF
-arquivo1 = "avaliacoes.xlsx"
-arquivo2 = "avaliacoesAVIA.xlsx"
+arquivo1 = "avaliacoes01.xlsx"
+arquivo2 = "avaliacoes02.xlsx"
 
 image = Image.open('headerRank.png')
 st.image(image, use_container_width=True)
@@ -40,7 +40,7 @@ else:
         media_geral_2 = df2["Média Final"].mean()
 
         ranking_df = pd.DataFrame({
-            "Tabela": ["Projeto Pseudonimização", "Analista Virtual (IA)"],
+            "Tabela": ["AV1 - Nome Projeto", "AV2 - Nome Projeto"], #Colocar o nome do projeto
             "Média Final Geral" : [media_geral_1, media_geral_2]
         }).sort_values(by="Média Final Geral", ascending=False).reset_index(drop=True) 
 
@@ -103,7 +103,7 @@ else:
                 media1 = df1.groupby("Avaliador")[coluna].mean()
                 media2 = df2.groupby("Avaliador")[coluna].mean()
 
-                comparacao = pd.concat([media1,media2], axis=1, keys=["Projeto Pseudononimização", "Projeto Analista Virtual (IA)"]).dropna()
+                comparacao = pd.concat([media1,media2], axis=1, keys=["AV1 - Nome Projeto", "AV2 - Nome Projeto"]).dropna()
 
                 if not comparacao.empty:
                     comparacao_reset = comparacao.reset_index().melt(
@@ -128,10 +128,10 @@ else:
             st.subheader("Lista de Avaliadores")
             col1, col2 = st.columns(2)
             with col1:
-                st.write("**Projeto Pseudonimização**")
+                st.write("**Projeto 1**")
                 st.dataframe(df1[["Avaliador"]].drop_duplicates().reset_index(drop=True))
             with col2:
-                st.write("**Projeto Analista Virtual (IA)**")
+                st.write("**Projeto 2**")
                 st.dataframe(df2[["Avaliador"]].drop_duplicates().reset_index(drop=True)) 
         else:
             st.warning(f"A coluna {coluna} não é numérica.")           
