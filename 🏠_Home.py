@@ -14,3 +14,47 @@ st.write("\nAtribua **uma nota de 0 a 5** para cada critério:\\"
          "\n •   5 -  Atende plenamente ao critério(nota máxima)\\"
          "\n A avaliação será calculada automaticamente conforme os pesos pré definidos."
          )
+
+st.markdown("<h1 style='text-align: center;'>Propostas de projeto em aberto</h1>", unsafe_allow_html=True)
+
+st.subheader("Projeto 1")
+st.write("\n Superintendência:  \\" 
+"\n Gerência: \\"
+"\n Proponente: \\"
+"\n Conheça melhor a proposta: LINK DO FORMS")
+st.page_link("pages/Avaliacao Projetos.py", label="Avaliação Projeto 1")
+
+st.subheader("Projeto 2")
+st.write("\n Superintendência:  \\" 
+"\n Gerência: \\"
+"\n Proponente: \\"
+"\n Conheça melhor a proposta: LINK DO FORMS")
+st.page_link("pages/Avaliacao Projetos.py", label="Avaliação Projeto 2")
+
+st.subheader("Projeto 3")
+st.write("\n Superintendência: \\" 
+"\n Gerência: \\"
+"\n Proponente: \\"
+"\n Conheça melhor a proposta: ")
+st.page_link("pages/Avaliacao Projetos.py", label="Avaliação Projeto 3")
+
+st.subheader("Projeto 4")
+st.write("\n Superintendência: \\" 
+"\n Gerência: \\"
+"\n Proponente: \\"
+"\n Conheça melhor a proposta: ")
+st.page_link("pages/Avaliacao Projetos.py", label="Avaliação Projeto 4")
+
+st.subheader("Projeto 5")
+st.write("\n Superintendência: \\" 
+"\n Gerência: \\"
+"\n Proponente: \\"
+"\n Conheça melhor a proposta: ")
+st.page_link("pages/Avaliacao Projetos.py", label="Avaliação Projeto 5")
+
+st.subheader("Projeto 6")
+st.write("\n Superintendência: \\" 
+"\n Gerência: \\"
+"\n Proponente: \\"
+"\n Conheça melhor a proposta: ")
+st.page_link("pages/Avaliacao Projetos.py", label="Avaliação Projeto 6")

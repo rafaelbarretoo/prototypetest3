@@ -3,21 +3,17 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 import plotly.express as px
+from PIL import Image
 
 st.set_page_config(page_title="📈Ranking", page_icon="📈")
-
-#st.title("📈Ranking")
-
-st.markdown(
-    "<div style='text-align: center; color: #4B0082; font-size: 40px;'>"
-    "📈Ranking" "<br>"
-    "</div>",
-    unsafe_allow_html=True
-)
 
 # Importando Arquivos DF
 arquivo1 = "avaliacoes.xlsx"
 arquivo2 = "avaliacoesAVIA.xlsx"
+
+image = Image.open('headerRank.png')
+st.image(image, use_container_width=True)
+
 
 # Colunas Desejadas
 colunas_desejadas =[
